@@ -4,8 +4,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 import os
-import folium
 from streamlit_js_eval import streamlit_js_eval
+import folium
 from folium.plugins import MarkerCluster
 from streamlit_folium import st_folium
 
@@ -213,7 +213,6 @@ def render_dashboard():
     st.subheader("📋 Last 5 Transactions")
 
     transactions = load_transactions()
- transactions = load_transactions()
     if not transactions.empty:
         recent = transactions.sort_values("datetime", ascending=False).head(5)
         display_df = recent.copy()
@@ -226,6 +225,7 @@ def render_dashboard():
                      hide_index=True)
     else:
         st.info("No transactions recorded yet.")
+
 
 def render_submit_expense():
     st.title("📝 Submit Expense")
