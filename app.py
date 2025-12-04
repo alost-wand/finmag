@@ -214,7 +214,7 @@ def render_dashboard():
 
     transactions = load_transactions()
     if not transactions.empty:
-        recent = transactions.sort_values("datetime", ascending=False).head(5)
+        recent = transactions.sort_values("datetime", ascending=False)
         display_df = recent.copy()
         display_df["amount"] = display_df["amount"].apply(format_currency)
         st.dataframe(display_df[[
