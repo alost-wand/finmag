@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 from datetime import datetime
 import os
 import folium
+from streamlit_js_eval import streamlit_js_eval
 from folium.plugins import MarkerCluster
 from streamlit_folium import st_folium
 
