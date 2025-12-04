@@ -2,3 +2,4 @@ streamlit
 plotly
 folium
 streamlit_folium
+streamlit_js_eval
