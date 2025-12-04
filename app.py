@@ -213,20 +213,19 @@ def render_dashboard():
     st.subheader("📋 Last 5 Transactions")
 
     transactions = load_transactions()
-if not transactions.empty:
-    recent = transactions.sort_values("datetime", ascending=False)  # removed .head(5)
-    display_df = recent.copy()
-    display_df["amount"] = display_df["amount"].apply(format_currency)
-    st.dataframe(display_df[[
-        "id", "datetime", "name", "division", "type", "amount",
-        "description"
-    ]],
-                 use_container_width=True,
-                 hide_index=True)
-else:
-    st.info("No transactions recorded yet.")
-
-
+ transactions = load_transactions()
+    if not transactions.empty:
+        recent = transactions.sort_values("datetime", ascending=False).head(5)
+        display_df = recent.copy()
+        display_df["amount"] = display_df["amount"].apply(format_currency)
+        st.dataframe(display_df[[
+            "id", "datetime", "name", "division", "type", "amount",
+            "description"
+        ]],
+                     use_container_width=True,
+                     hide_index=True)
+    else:
+        st.info("No transactions recorded yet.")
 
 def render_submit_expense():
     st.title("📝 Submit Expense")
